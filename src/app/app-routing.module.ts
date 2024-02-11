@@ -1,30 +1,39 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/places/places.module').then( m => m.PlacesPageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
-  },
-  {
-    path: 'places',
-    loadChildren: () => import('./pages/places/places.module').then( m => m.PlacesPageModule)
-  },
-];
+import { TabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: TabsComponent,
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'places/tabs/discover',
+          },
+          {
+            path: 'auth',
+            loadChildren: () => import('./pages/auth/auth.module').then((m) => m.AuthPageModule),
+          },
+          {
+            path: 'booking',
+            loadChildren: () => import('./pages/booking/booking.module').then((m) => m.BookingPageModule),
+          },
+          {
+            path: 'places/tabs/discover',
+            loadChildren: () => import('./pages/places/tabs/discover/discover.module').then((m) => m.DiscoverPageModule),
+          },
+          {
+            path: 'places/tabs/offers',
+            loadChildren: () => import('./pages/places/tabs/offers/offers.module').then((m) => m.OffersPageModule),
+          },
+        ],
+      },
+    ]),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

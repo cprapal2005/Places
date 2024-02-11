@@ -1,0 +1,83 @@
+ion-header {
+border-bottom: 1px solid gainsboro;
+font-size: x-small;
+}
+
+.tituloInicio {
+    padding: 4%;
+    font-size: medium;
+    font-weight: bolder;
+    margin-top:1%;
+}
+
+ion-title {
+ font-weight: bold;
+ padding-top: 10%;
+ padding-bottom: 7%;
+}
+
+.bordesArriba {
+    border-top-left-radius: 10px 10px;
+    border-top-right-radius: 10px 10px;
+}
+
+.bordesAbajo {
+    border-bottom-left-radius: 10px 10px;
+    border-bottom-right-radius: 10px 10px;
+}
+
+.roundedInput {
+    
+    --border-width: 1px;
+    --highlight-height: 0;
+    --highlight-background: gray;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+.buttonIniciarSesion {
+
+    padding: 6%;
+    font-size: larger;
+    font-weight: 500;
+    --background: #005792;
+}
+
+.text-divider {
+    display: flex;
+    align-items: center;
+}
+  
+.text-divider::before,
+.text-divider::after {
+    content: '';
+    height: 1px;
+    background-color: gainsboro;
+    flex-grow: 1;
+    margin-right: 7%;
+    margin-left: 7%;
+}
+
+.buttonsredesSociales {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-left: 7%;
+    margin-right: 7%;
+    font-size: small;
+    font-weight: 500;
+    font-style: initial;
+    text-transform: initial;
+    --background: white;
+    --border-radius: 5px;
+    --border-color: #000;
+    --border-style: solid;
+    --border-width: 1px;
+    --box-shadow: 0 0px 0px 0 rgb(0, 0, 0, 0);
+    color: black;
+}
+
+ion-icon {
+    position: absolute;
+    margin-right: 90%;
+    font-size: 24px;
+}

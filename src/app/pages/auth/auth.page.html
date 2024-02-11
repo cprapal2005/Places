@@ -1,13 +1,37 @@
-<ion-header [translucent]="true">
+<ion-header  class="ion-no-border ion-text-center">
   <ion-toolbar>
-    <ion-title>Auth</ion-title>
+    <ion-title class="tituloInicio">Inicia sesión o registrate</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Auth</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-title class="ion-text-center">¡Te damos la bienvenida a Places!</ion-title>
+  <form  novalidate>
+    <ion-item class="roundedInput bordesArriba" color="light">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item class="roundedInput bordesAbajo"  color="light">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-button class="ion-text-capitalize buttonIniciarSesion" expand="block">Continúa</ion-button>
+  </form>
+  <div class="text-divider">o</div>
+  <ion-button class="ion-text-capitalize buttonsredesSociales" expand="block">
+    <ion-icon name="logo-facebook"></ion-icon>
+    Continúa con Facebook
+  </ion-button>
+  <ion-button class="ion-text-capitalize buttonsredesSociales" expand="block">
+    <ion-icon name="logo-google"></ion-icon>
+    Continúa con Google
+  </ion-button>
+  <ion-button class="ion-text-capitalize buttonsredesSociales" expand="block">
+    <ion-icon name="logo-apple"></ion-icon>
+    Continúa con Apple
+  </ion-button>
+  <ion-button class="buttonsredesSociales" expand="block">
+    <ion-icon class="ion-padding" name="mail-outline"></ion-icon>
+    Continúa con el correo electronico
+  </ion-button>
 </ion-content>
