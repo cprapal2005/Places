@@ -34,3 +34,29 @@ ion-item-divider {
     position: relative;
     padding: 0;
   }
+
+.divOculto {
+    white-space: normal;
+}
+
+.lblOculto {
+    color: gray;
+    margin-left: 8%;
+    margin-right: 8%;
+    white-space: normal;
+}
+
+.tituloOculto {
+    font-size: x-large;
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+
+.buttonIniciarSesion {
+
+    padding: 6%;
+    font-size: larger;
+    font-weight: 500;
+    --background: #005792;
+    text-transform: initial;
+}
