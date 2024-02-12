@@ -13,7 +13,6 @@ ion-item-divider {
 ion-item{
     padding-left: 3%;
     padding-right: 3%;
-    margin-bottom: 5%;
     --lines: none;
 }
 
@@ -67,3 +66,15 @@ ion-img::part(image) {
     --background: #005792;
     text-transform: initial;
 }
+
+ion-img::part(image) {
+    border-radius: 5%;
+  }
+
+  swiper-container {
+    width: 100%;
+    height: 100%;
+    --swiper-pagination-color: white;
+    --swiper-pagination-bullet-inactive-opacity: 0.5;
+    --swiper-pagination-bullet-inactive-color: gainsboro;
+  }

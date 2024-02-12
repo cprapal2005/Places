@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookingPage implements OnInit {
 
-  flag = false;
+  flag = true;
 
   constructor() { }
 
