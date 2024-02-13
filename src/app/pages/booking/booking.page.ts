@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GestionService } from 'src/app/services/gestion.service';
 
 @Component({
   selector: 'app-booking',
@@ -7,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookingPage implements OnInit {
 
-  flag = true;
+  inicioSesion = false;
 
-  constructor() { }
+  constructor(private router: Router, private gestionService: GestionService) { }
 
   ngOnInit() {
+    this.inicioSesion = this.gestionService.conectado;
+  }
+
+  iniciarSesion() {
+    this.router.navigate(['/auth']);
   }
 
 }

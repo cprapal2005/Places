@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
   <ion-title class="titleOfertas">Ofertas</ion-title>
-  <div *ngIf="flag==true">
+  <div *ngIf="inicioSesion==true">
   <ion-list>
     <div>
       <ion-item lines="none">
@@ -44,19 +44,19 @@
   </ion-list>
   
 </div>
-<ion-fab *ngIf="flag==true" slot="fixed" vertical="bottom" horizontal="end" (click)="nuevaOferta()">
+<ion-fab *ngIf="inicioSesion==true" slot="fixed" vertical="bottom" horizontal="end" (click)="nuevaOferta()">
   <ion-fab-button>
     <ion-icon size="large" name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
-<div *ngIf="flag==false">
+<div *ngIf="inicioSesion==false">
   <ion-title class="tituloOculto">
     <div class="divOculto">
       Inicia sesión para consultar tus ofertas
     </div>
   </ion-title>
   <p class="lblOculto">Podrás crear, consultar o editar tus ofertas una vez que inicies sesión.</p>
-  <ion-button class="buttonIniciarSesion">Iniciar sesión</ion-button>
+  <ion-button class="buttonIniciarSesion" (click)="iniciarSesion()">Iniciar sesión</ion-button>
 </div>
 
 </ion-content>

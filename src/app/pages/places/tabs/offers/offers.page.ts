@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GestionService } from 'src/app/services/gestion.service';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -11,15 +12,20 @@ register();
 })
 export class OffersPage implements OnInit {
 
-  flag = true;
+  inicioSesion = false;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private gestionService: GestionService) { }
 
   ngOnInit() {
+    this.inicioSesion = this.gestionService.conectado;
   }
 
   nuevaOferta() {
     this.router.navigate(['new-offer'], {relativeTo: this.route});
+  }
+
+  iniciarSesion() {
+    this.router.navigate(['/auth']);
   }
 
 }

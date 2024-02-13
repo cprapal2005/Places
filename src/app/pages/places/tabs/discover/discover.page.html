@@ -1,10 +1,10 @@
 <ion-content [fullscreen]="true">
-  <ion-searchbar shape="round" placeholder="Cualquier lugar"></ion-searchbar>
+  <ion-searchbar shape="round" placeholder="Cualquier lugar" #searchbar (ionInput)="filtrarCasas(searchbar.value!)"></ion-searchbar>
   <ion-item-divider></ion-item-divider>
   <ion-list>
 
-    <div>
-      <ion-item lines="none">
+    <div *ngFor="let casa of listaCasas">
+      <ion-item  lines="none">
         <swiper-container pagination="true">
           <swiper-slide>
             <ion-img src="https://a0.muscache.com/im/pictures/43a44c04-8eb5-4cd3-a930-397d7276d03c.jpg?im_w=720"></ion-img>
@@ -16,9 +16,9 @@
       </ion-item>
       <ion-item lines="none" style="margin-bottom: 5%;">
         <ion-label>
-          <p><strong>Anguciana, España</strong></p>
-          <p>Anfitrión: Carlos</p>
-          <p><strong>185 €</strong> noche</p>
+          <p><strong>{{ casa.titulo }}, {{ casa.pais }}</strong></p>
+          <p>Anfitrión: {{ casa.nombreOwner }}</p>
+          <p><strong>{{ casa.precio }} €</strong> noche</p>
         </ion-label>
       </ion-item>
     </div>
