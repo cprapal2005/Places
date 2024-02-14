@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GestionService } from 'src/app/services/gestion.service';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -13,7 +14,7 @@ export class PlaceDetailPage implements OnInit {
 
   public casaDetalles: any;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router, private gestionService: GestionService) {
 
     this.casaDetalles = {
       _id: "",
@@ -45,6 +46,20 @@ export class PlaceDetailPage implements OnInit {
       }
 
     });
+  }
+
+  realizarReserva() {
+
+    if(this.gestionService.conectado) {
+
+      this.gestionService.reservarCasa(this.casaDetalles).subscribe((response) => {
+        if(!response.error || response!=null) this.router.navigate(['/booking']);
+      })
+
+    }
+
+    else this.router.navigate(['/auth']);
+
   }
 
 }

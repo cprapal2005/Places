@@ -16,12 +16,13 @@ export class GestionService {
   constructor(private httpService: HttpService, private router: Router) {
     this.listaCasas = [];
     this.$listaCasas.next(this.listaCasas);
+    this.usuario = {}
   }
 
   iniciarSesion(usuario: any): boolean {
     this.httpService.postLogin(usuario).subscribe((respuesta) => {
       if(respuesta!=null) {
-        usuario = respuesta.user;
+        this.usuario = respuesta.user;
         this.httpService.jwtToken = respuesta.token; 
         this.conectado = true;
         this.router.navigate(['/places/tabs/discover']);
@@ -52,6 +53,21 @@ export class GestionService {
 
   getCasa(id: any): Observable<any> {
     return this.httpService.getCasa(id);
+  }
+
+  reservarCasa(casa: any): Observable<any> {
+    return this.httpService.postBooking({
+      fecha_inicio:"2024-02-14",
+    fecha_fin: "2024-02-20",
+    cantidad_personas: 1,
+    precio_final: casa.precio,
+    user_id: this.usuario._id,
+    house_id: casa._id,
+    owner_id: casa.user_id});
+  }
+
+  getBookings(): Observable<any> {
+    return this.httpService.getBookings(this.usuario._id);
   }
 
 }

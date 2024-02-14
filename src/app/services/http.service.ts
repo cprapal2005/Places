@@ -34,12 +34,22 @@ export class HttpService {
     return this.http.get(`${this.apiUrl}/houses/${id}`, { headers });
   }
 
-  postData(data: any): Observable<any> {
+  postBooking(booking: any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.jwtToken}`
     });
-
-    return this.http.post<any>(`${this.apiUrl}/ruta-endpoint`, data, { headers });
+    
+    return this.http.post(`${this.apiUrl}/bookings`, booking, { headers });
   }
+
+  getBookings(id: any) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.jwtToken}`
+    });
+    
+    return this.http.get(`${this.apiUrl}/bookings/${id}`, { headers });
+  }
+
 }

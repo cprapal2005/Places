@@ -10,11 +10,15 @@ import { GestionService } from 'src/app/services/gestion.service';
 export class BookingPage implements OnInit {
 
   inicioSesion = false;
+  listaBookings: any = {};
 
   constructor(private router: Router, private gestionService: GestionService) { }
 
   ngOnInit() {
     this.inicioSesion = this.gestionService.conectado;
+    this.gestionService.getBookings().subscribe((response => {
+      
+    }))
   }
 
   iniciarSesion() {
