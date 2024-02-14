@@ -50,4 +50,8 @@ export class GestionService {
     );
   }
 
+  getCasa(id: any): Observable<any> {
+    return this.httpService.getCasa(id);
+  }
+
 }

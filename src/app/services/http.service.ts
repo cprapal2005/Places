@@ -25,7 +25,14 @@ export class HttpService {
     return this.http.get(`${this.apiUrl}/houses`, { headers });
   }
 
-
+  getCasa(id: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.jwtToken}`
+    });
+    
+    return this.http.get(`${this.apiUrl}/houses/${id}`, { headers });
+  }
 
   postData(data: any): Observable<any> {
     const headers = new HttpHeaders({

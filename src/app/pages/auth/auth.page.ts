@@ -26,7 +26,6 @@ export class AuthPage implements OnInit {
   }
 
   ngOnInit() {
-    this.conectado = this.gestionService.conectado;
   }
 
   login() {
@@ -35,7 +34,9 @@ export class AuthPage implements OnInit {
       this.mostrarAlerta( "Error", "Validación Incorrecta",["OK"]);
     }
     else{
-      this.gestionService.iniciarSesion({email:this.email, password: this.password})
+      if(this.gestionService.iniciarSesion({email:this.email, password: this.password})) {
+        this.conectado = true;
+      }
     }
     
   }

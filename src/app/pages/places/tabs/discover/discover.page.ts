@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GestionService } from 'src/app/services/gestion.service';
 import { register } from 'swiper/element/bundle';
 
@@ -13,7 +14,7 @@ export class DiscoverPage implements OnInit, AfterViewInit {
 
   listaCasas: any;
 
-  constructor(private gestionService: GestionService) { }
+  constructor(private gestionService: GestionService, private router: Router, private route: ActivatedRoute) { }
 
   ngAfterViewInit(): void {
     this.filtrarCasas('');
@@ -29,6 +30,10 @@ export class DiscoverPage implements OnInit, AfterViewInit {
 
   filtrarCasas(filtro: string) {
     this.gestionService.filtrarCasas(filtro);
+  }
+
+  detallesCasa(casa: any) {
+    this.router.navigate(['places/tabs/discover/place-detail', casa]);
   }
 
 }
