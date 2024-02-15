@@ -26,6 +26,7 @@ export class AuthPage implements OnInit {
   }
 
   ngOnInit() {
+    this.conectado = this.gestionService.conectado;
   }
 
   login() {

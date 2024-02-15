@@ -12,10 +12,14 @@ export class GestionService {
   public usuario: any;
   private listaCasas!: Array<any>
   private $listaCasas: BehaviorSubject<any> = new BehaviorSubject<any>(this.listaCasas);
+  private listaBookings!: Array<any>
+  private $listaBookings: BehaviorSubject<any> = new BehaviorSubject<any>(this.listaBookings);
 
   constructor(private httpService: HttpService, private router: Router) {
     this.listaCasas = [];
     this.$listaCasas.next(this.listaCasas);
+    this.listaBookings = [];
+    this.$listaBookings.next(this.listaBookings);
     this.usuario = {}
   }
 
@@ -67,7 +71,34 @@ export class GestionService {
   }
 
   getBookings(): Observable<any> {
-    return this.httpService.getBookings(this.usuario._id);
+    this.httpService.getBookings().pipe(
+
+      tap(reserva => {
+        reserva.forEach((element: any) => {
+          this.getCasa(element.house_id).subscribe((casa) => {
+            let casaDetalles = {
+              _id: casa._id,
+              titulo : casa.titulo,
+              descripcion : casa.descripcion,
+              direccion : casa.direccion,
+              ciudad : casa.ciudad,
+              pais : casa.pais,
+              precio : casa.precio,
+              nombreOwner : casa.nombreOwner,
+              user_id : casa.user_id
+            }
+            this.listaBookings.push(casaDetalles);
+            
+          })
+        });
+
+        this.$listaBookings.next(this.listaBookings);
+        
+      })
+    );
+
+    return this.$listaBookings.asObservable();
+
   }
 
 }

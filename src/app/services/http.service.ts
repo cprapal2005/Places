@@ -43,13 +43,13 @@ export class HttpService {
     return this.http.post(`${this.apiUrl}/bookings`, booking, { headers });
   }
 
-  getBookings(id: any) {
+  getBookings(): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.jwtToken}`
     });
     
-    return this.http.get(`${this.apiUrl}/bookings/${id}`, { headers });
+    return this.http.get(`${this.apiUrl}/booking`, { headers });
   }
 
 }
